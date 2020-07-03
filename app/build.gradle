@@ -1,0 +1,132 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    buildToolsVersion rootProject.ext.android.buildToolsVersion
+
+    defaultConfig {
+        applicationId "com.kotlin.panel"
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode rootProject.ext.android.versionCode
+        versionName rootProject.ext.android.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        /**
+         * Android Studio 1.4 之前提供了对于vector drawables的有限制性的支持，主要是依赖于在构建时将vector drawables转化为png。
+         * 现在自然是不需要了，为了停用该功能，需要在build.gradle中添加vectorDrawables.useSupportLibrary = true
+         */
+        vectorDrawables.useSupportLibrary = true
+        /**添加多 dex分包支持*/
+        multiDexEnabled true
+    }
+
+    lintOptions {
+        // true--错误发生后停止gradle构建
+        abortOnError false
+        // true--检查所有问题点，包含其他默认关闭项
+        checkAllWarnings true
+        // 关闭指定问题检查
+        disable 'CheckResult'
+
+
+//        // true--关闭lint报告的分析进度
+//        quiet true
+//        // true--只报告error
+//        ignoreWarnings true
+//        // true--忽略有错误的文件的全/绝对路径(默认是true)
+//        //absolutePaths true
+//
+//        // true--所有warning当做error
+//        warningsAsErrors true
+//        // 打开指定问题检查
+//        enable 'RtlHardcoded','RtlCompat', 'RtlEnabled'
+//        // 仅检查指定问题
+//        check 'NewApi', 'InlinedApi'
+//        // true--error输出文件不包含源码行号
+//        noLines true
+//        // true--显示错误的所有发生位置，不截取
+//        showAll true
+//        // 回退lint设置(默认规则)
+//        lintConfig file("default-lint.xml")
+//        // true--生成txt格式报告(默认false)
+//        textReport true
+//        // 重定向输出；可以是文件或'stdout'
+//        textOutput 'stdout'
+//        // true--生成XML格式报告
+//        xmlReport false
+//        // 指定xml报告文档(默认lint-results.xml)
+//        xmlOutput file("lint-report.xml")
+//        // true--生成HTML报告(带问题解释，源码位置，等)
+//        htmlReport true
+//        // html报告可选路径(构建器默认是lint-results.html )
+//        htmlOutput file("lint-report.html")
+//        //  true--所有正式版构建执行规则生成崩溃的lint检查，如果有崩溃问题将停止构建
+//        checkReleaseBuilds true
+//        // 在发布版本编译时检查(即使不包含lint目标)，指定问题的规则生成崩溃
+//        fatal 'NewApi', 'InlineApi'
+//        // 指定问题的规则生成错误
+//        error 'Wakelock', 'TextViewEdits'
+//        // 指定问题的规则生成警告
+//        warning 'ResourceAsColor'
+//        // 忽略指定问题的规则(同关闭检查)
+//        ignore 'TypographyQuotes'
+    }
+
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            shrinkResources false // 自动清理无用资源
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    /**exclude 在打包时移除项目中的相关文件，不打入apk文件中*/
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/INDEX.LIST'
+
+        exclude 'META-INF/rxjava.properties'
+    }
+
+    dexOptions {
+        javaMaxHeapSize "4g" //指定dex进程的堆大小
+        preDexLibraries = true //删除已经预删除的库
+    }
+
+    compileOptions {
+        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_1_8
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    //android x库
+    api rootProject.ext.supportLibs
+    // 网络请求库
+    implementation rootProject.ext.networkLibs
+    // RxJava3
+    implementation rootProject.ext.rxJavaLibs
+    //公共库
+    implementation rootProject.ext.commonLibs
+    testImplementation rootProject.ext.testDeps["junit"]
+    androidTestImplementation rootProject.ext.testDeps["androidjunit"]
+    androidTestImplementation rootProject.ext.testDeps["espresso-core"]
+
+    // APT dependencies(Kotlin内置的注解处理器)
+    annotationProcessor rootProject.ext.annotationProcessorLibs
+    //GlideOkHttp
+    implementation(rootProject.ext.otherDeps["glideOkhttp"]) {
+        exclude group: 'glide-parent'
+    }
+}

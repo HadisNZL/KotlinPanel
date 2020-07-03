@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.kotlin.panel.widget.CustomPreferenceCategory
+        android:title="基本设置"
+        app:iconSpaceReserved="false">
+
+
+        <com.kotlin.panel.widget.IconPreference
+            android:key="color"
+            android:layout="@layout/custom_preference_layout"
+            android:summary="自定义主题颜色"
+            android:title="主题颜色" />
+
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="nav_bar"
+            android:layout="@layout/custom_preference_layout"
+            android:summary="导航栏颜色跟随主题"
+            android:title="导航栏着色" />
+
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="nav_night_mode"
+            android:layout="@layout/custom_preference_layout"
+            android:summary="屏幕亮度会降低"
+            android:title="夜间模式" />
+
+    </com.kotlin.panel.widget.CustomPreferenceCategory>
+
+
+    <com.kotlin.panel.widget.CustomPreferenceCategory
+        android:title="关于"
+        app:iconSpaceReserved="false">
+
+
+        <Preference
+            android:key="version"
+            android:layout="@layout/custom_preference_layout"
+            android:summary="当前版本1.0.0"
+            android:title="版本" />
+
+
+        <Preference
+            android:key="features01"
+            android:layout="@layout/custom_preference_layout"
+            android:summary="功能1描述"
+            android:title="功能1" />
+
+        <Preference
+            android:key="features02"
+            android:layout="@layout/custom_preference_layout"
+            android:summary="功能2描述"
+            android:title="功能2" />
+        <Preference
+            android:key="features03"
+            android:layout="@layout/custom_preference_layout"
+            android:summary="功能3描述"
+            android:title="功能3" />
+        <Preference
+            android:key="features04"
+            android:layout="@layout/custom_preference_layout"
+            android:summary="功能4描述"
+            android:title="功能4" />
+
+        <Preference
+            android:key="features05"
+            android:layout="@layout/custom_preference_layout"
+            android:summary="功能5描述"
+            android:title="功能5" />
+
+
+        <Preference
+            android:key="features06"
+            android:layout="@layout/custom_preference_layout"
+            android:summary="功能6描述"
+            android:title="功能6" />
+
+
+        <Preference
+            android:key="features06"
+            android:layout="@layout/custom_preference_layout"
+            android:summary="功能6描述"
+            android:title="功能6" />
+
+
+        <Preference
+            android:key="about_us"
+            android:layout="@layout/custom_preference_layout"
+            android:summary=""
+            android:title="关于我们" />
+
+    </com.kotlin.panel.widget.CustomPreferenceCategory>
+
+
+</PreferenceScreen>

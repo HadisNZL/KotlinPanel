@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_home"
+        android:enabled="true"
+        android:icon="@drawable/ic_app_aliens"
+        android:title="@string/home_name"
+        app:showAsAction="ifRoom" />
+
+    <!--android:icon="@drawable/ic_home_setting"-->
+    <item
+        android:id="@+id/action_second"
+        android:enabled="true"
+        android:icon="@drawable/ic_second_setting"
+        android:title="@string/second_name"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_third"
+        android:enabled="true"
+        android:icon="@drawable/ic_third_setting"
+        android:title="@string/third_name"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_mine"
+        android:enabled="true"
+        android:icon="@drawable/ic_mine_setting"
+        android:title="@string/mine_name"
+        app:showAsAction="ifRoom" />
+</menu>
