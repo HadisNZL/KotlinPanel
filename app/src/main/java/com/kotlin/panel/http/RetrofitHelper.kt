@@ -1,7 +1,6 @@
 package com.kotlin.panel.http
 
-import android.R
-import com.cxz.wanandroid.constant.Constant
+import com.kotlin.panel.constant.Constant
 import com.kotlin.panel.BuildConfig
 import com.kotlin.panel.api.ApiService
 import com.kotlin.panel.app.App
@@ -12,17 +11,7 @@ import retrofit2.Retrofit
 import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
 import java.io.File
-import java.io.IOException
-import java.io.InputStream
-import java.security.KeyManagementException
-import java.security.KeyStore
-import java.security.KeyStoreException
-import java.security.NoSuchAlgorithmException
-import java.security.cert.Certificate
-import java.security.cert.CertificateException
-import java.security.cert.CertificateFactory
 import java.util.concurrent.TimeUnit
-import javax.net.ssl.SSLContext
 import javax.net.ssl.SSLSocketFactory
 import javax.net.ssl.TrustManagerFactory
 
