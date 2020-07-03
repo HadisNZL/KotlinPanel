@@ -1,12 +1,8 @@
 package com.cxz.wanandroid.constant
 
-/**
- * Created by chenxz on 2018/4/21.
- */
 
 object Constant {
 
-    const val BUGLY_ID = "76e2b2867d"
 
     const val BASE_URL = "https://www.wanandroid.com/"
 
